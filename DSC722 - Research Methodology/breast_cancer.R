@@ -81,7 +81,9 @@ prop.table(table(test.data$diagnosis))
 # Training Model
 # --------------------------------------
 
-# Use 1 hidden neurons (default)
+set.seed(1220)
+
+# Default ANN Model: Uses 1 hidden neurons
 bc.model <- neuralnet(M + B ~ radius_mean + texture_mean + perimeter_mean + 
                         area_mean + smoothness_mean + compactness_mean + concavity_mean + 
                         concave.points_mean + symmetry_mean + fractal.dimension_mean + 
@@ -93,7 +95,7 @@ bc.model <- neuralnet(M + B ~ radius_mean + texture_mean + perimeter_mean +
                         symmetry_worst + fractal.dimension_worst, data = train.data, 
                       act.fct = "logistic", linear.output = FALSE, lifesign = "minimal")
 
-# Use 6 hidden neurons 
+# Custom ANN Model: Uses 6 hidden neurons 
 bc.model2 <- neuralnet(M + B ~ radius_mean + texture_mean + perimeter_mean + 
                         area_mean + smoothness_mean + compactness_mean + concavity_mean + 
                         concave.points_mean + symmetry_mean + fractal.dimension_mean + 
@@ -109,26 +111,23 @@ bc.model2 <- neuralnet(M + B ~ radius_mean + texture_mean + perimeter_mean +
 # Plot the neural network topology
 plot(bc.model)
 plot(bc.model2)
+
+# Check the available command for our ANN model
 names(bc.model)
+
+# List out the result - checking the output stored
 bc.model$net.result
 
-
-# Compute predictions on training dataset
+# Compute predictions on training dataset [compute is from the neuralnet package]
 bc.trainResult  <- compute(bc.model, train.data[2:31])
 bc.trainResult2 <- compute(bc.model2, train.data[2:31]) 
 
-
-# Extract the training dataset results
+# Extract the training dataset results. Result is numerical in each column.
+# The highest column is the one that is predicted by the model.
 trainResult  <- bc.trainResult$net.result
 trainResult2 <- bc.trainResult2$net.result
 
-predicted.train <- trainResult %>% 
-  round(., 3) %>% 
-  as.tibble() %>% 
-  mutate(predicted = if_else(V1 == 1, "M", "B")) %>% 
-  select(predicted) %>% 
-  unlist(use.names = FALSE)
-
+# Find the max column and label accordingly
 predicted.train <- trainResult %>% 
   max.col() %>% 
   factor(., labels = c("M", "B"))
@@ -144,24 +143,21 @@ train.neuralnet2 <- max.col(trainResult2)
 mean(train.original == train.neuralnet)
 mean(train.original == train.neuralnet2)
 
-
 train.data.mod <- train.data %>% 
   add_column(predicted = factor(predicted.train), .before = 1)
 
+# Create confusion matrix with the training dataset for default ANN model
 CrossTable(train.data.mod$diagnosis, train.data.mod$predicted, 
            prop.chisq = FALSE, prop.c = FALSE, prop.r = FALSE,
            dnn = c("Actual Diagnosis", "Predicted Diagnosis"))
-
 
 # Compute predictions on test dataset
 bc.testResult  <- compute(bc.model, test.data[2:31])
 bc.testResult2 <- compute(bc.model2, test.data[2:31])
 
-
 # Extract the testing datasetresults
 testResult  <- bc.testResult$net.result
 testResult2 <- bc.testResult2$net.result 
-
 
 # Compare the accuracy
 test.original   <- max.col(test.data[32:33])
@@ -178,16 +174,14 @@ predicted.test2 <- testResult2 %>%
   max.col() %>% 
   factor(., labels = c("M", "B"))
 
-
+# Create the confusion matrix on the test dataset for the default ANN model
 CrossTable(test.data$diagnosis, predicted.test, 
            prop.chisq = FALSE, prop.c = FALSE, prop.r = FALSE,
            dnn = c("Actual Diagnosis", "Predicted Diagnosis"))
 
+# Create the confusion matrix on the test dataset for the custom ANN model
 CrossTable(test.data$diagnosis, predicted.test2, 
            prop.chisq = FALSE, prop.c = FALSE, prop.r = FALSE,
            dnn = c("Actual Diagnosis", "Predicted Diagnosis"))
-
-fourfoldplot(cm_c50$table, color = col, conf.level = 0, 
-             margin = 1, main=paste("C5.0 (",round(cm_c50$overall[1]*100),"%)",sep=""))
 
 
