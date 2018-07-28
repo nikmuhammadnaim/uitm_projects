@@ -10,8 +10,8 @@ Studies have shown that applying machine learning techniques on biopsy result ca
   
 To compare the accuracy of breast cancer detection thru FNA biopsy between three different classification techniques:  
   
-  1. Support Vector Machine
-  2. Artificial Neural Network
+  1. Support Vector Machine (SVM)
+  2. Artificial Neural Network (ANN)
   3. Decision Tree  
   
 ## Results  
@@ -31,3 +31,9 @@ To compare the accuracy of breast cancer detection thru FNA biopsy between three
 ## Lecturer  
   
 * [Dr. Marina Yusoff](https://fskm.uitm.edu.my/v4/index.php?option=com_content&view=article&id=168&catid=45&Itemid=227)
+
+## Dataset 
+
+Data used for this project was made available by Dr. William H. Wolberg, W. Nick Street and Olvi L. Mangasarian. It was retrieved from the UCI Machine Learning Repository.  
+
+* Dua, D. and Karra Taniskidou, E. (2017). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
