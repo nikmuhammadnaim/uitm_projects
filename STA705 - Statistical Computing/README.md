@@ -7,18 +7,18 @@
 The task given by the Professor was to analyze time series data. Any time series data can be used but must be analyzed thoroughly.  
   
 I chose to analyze Malaysian stock market focusing on the following four companies:
-  1. Nestle Malaysia Berhad
-  2. Dutch Lady Milk Industries Bhd
-  3. Fraser & Neave (F&N) Holdings Berhad
-  4. Ajinomoto Malaysia Berhad
+  1. Nestle
+  2. Dutch Lady
+  3. F&N
+  4. Ajinomoto
 
 The primary focus of this study will be on Nestle stock price. The other three stock price will be used for comparative investment gain. 
 
 ### Dataset
 
-The data that will be used in this project spans from January 2013 to December 2017. It was retrieved directly from [Yahoo! Finance](https://finance.yahoo.com/) through the `tq_get()` R command.
-
-`tq_get()` is part of the `tidyquant` library. The following code shows how Nestle stock data was directly downloaded into the R environment
+The data used in this project spans from January 2013 to December 2017. It was retrieved directly from [Yahoo! Finance](https://finance.yahoo.com/) through the `tq_get()` R command which is part of the `tidyquant` library.  
+  
+The following code shows how Nestle stock price data can be directly downloaded into the R environment.
 
 ```R
 library(tidyquant)
@@ -38,9 +38,9 @@ Table below shows the Yahoo! Finance symbol to be used inside the R code.
 The data used in this project were exported and are made available in this github. 
 
 ### Detailed Analysis
-
-
-
+  
+  
+  
 ## Group Project: Multivariate Linear Regression Analysis
 
 ### Introduction
@@ -51,12 +51,16 @@ The data used in this project were exported and are made available in this githu
 1. To model our three measure of concrete strength into three separate linear regression.  
   
 2. To identify the best variable selection method for our linear models:
-  * BIC via regsubset() function
-  * AIC va step() function
+    * BIC via regsubset() function
+    * AIC va step() function
 
 3. Explore the simulation() function with our three linear models.
 
 ### Results
+
+AIC selection method has the highest adjusted-R<sup>2</sup> for all three models.
+
+Original adjusted-R<sup>2</sup> means all the variables/predictors are used to build the linear regression model.
 
 | Linear Model  | Original Adjusted R<sup>2</sup> | BIC Adjusted R<sup>2</sup>| AIC Adjusted R<sup>2</sup>|
 | ------------- |:-------------------------------:| :-----------------------: | ------------------------- |
@@ -79,4 +83,4 @@ Data was made available by I-Cheng Yeh and retrieved from UCI Machine Learning w
 
 ## Lecturer
 
-[Assoc. Prof. Dr. Sayang Mohd Deni] (https://fskm.uitm.edu.my/v4/index.php?option=com_content&view=article&id=236&catid=44&Itemid=227)
+[Assoc. Prof. Dr. Sayang Mohd Deni](https://fskm.uitm.edu.my/v4/index.php?option=com_content&view=article&id=236&catid=44&Itemid=227)
