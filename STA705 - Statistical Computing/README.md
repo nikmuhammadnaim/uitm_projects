@@ -37,14 +37,30 @@ Table below shows the Yahoo! Finance symbol to be used inside the R code.
 
 The data used in this project were exported and are made available in this github. 
 
-### Detailed Analysis
+### Analysis
+
+#### 1. Stock Price Movement
+
+![nestle_stock_price](https://user-images.githubusercontent.com/24283367/43524131-0bbe9536-95d1-11e8-8f9a-6490cd201663.png)
+
+The graph above shows the stock price change for Nestle from January 2013 to January 2017. Price have increases from RM 62.86 to RM 103.20.
+
+#### 2. 50-day & 200-day Simple Moving Average (SMA)
   
+One of the most popular technical trend indicator among stock investors are the simple moving average 50-days and 200-days.  
   
+![nestle_sma](https://user-images.githubusercontent.com/24283367/43528327-47e8fba0-95db-11e8-8482-00d600bfe5f8.png)
+
+If the 50-day SMA crosses under the 200-day SMA, it is usually a good indicator to sell the stock. The same goes the other way, if the 50-day SMA crosses over the 200-day SMA, investors will generally rush to buy the stocks
   
 ## Group Project: Multivariate Linear Regression Analysis
 
 ### Introduction
 
+A good concrete has the following qualities: strong, durable and resist wear and tear. There are three tests that are good at measuring concrete strength. Those tests are:
+  * concrete slump test
+  * flow table test
+  * compressive strength test
 
 ### Objectives
 
