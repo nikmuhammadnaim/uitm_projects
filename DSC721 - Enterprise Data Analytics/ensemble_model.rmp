@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="8.2.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="8.2.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="8.2.000" expanded="true" height="68" name="Read Excel" width="90" x="45" y="34">
+        <parameter key="excel_file" value="C:\Users\nxa18327\Documents\Study Material\UiTM\DSC721\Project\default of credit card clients.xls"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A2:Y30002"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="false"/>
+        <list key="annotations">
+          <parameter key="0" value="Name"/>
+        </list>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="ID.true.integer.attribute"/>
+          <parameter key="1" value="LIMIT_BAL.true.integer.attribute"/>
+          <parameter key="2" value="SEX.true.polynominal.attribute"/>
+          <parameter key="3" value="EDUCATION.true.polynominal.attribute"/>
+          <parameter key="4" value="MARRIAGE.true.polynominal.attribute"/>
+          <parameter key="5" value="AGE.true.integer.attribute"/>
+          <parameter key="6" value="PAY_0.true.polynominal.attribute"/>
+          <parameter key="7" value="PAY_2.true.polynominal.attribute"/>
+          <parameter key="8" value="PAY_3.true.polynominal.attribute"/>
+          <parameter key="9" value="PAY_4.true.polynominal.attribute"/>
+          <parameter key="10" value="PAY_5.true.polynominal.attribute"/>
+          <parameter key="11" value="PAY_6.true.polynominal.attribute"/>
+          <parameter key="12" value="BILL_AMT1.true.integer.attribute"/>
+          <parameter key="13" value="BILL_AMT2.true.integer.attribute"/>
+          <parameter key="14" value="BILL_AMT3.true.integer.attribute"/>
+          <parameter key="15" value="BILL_AMT4.true.integer.attribute"/>
+          <parameter key="16" value="BILL_AMT5.true.integer.attribute"/>
+          <parameter key="17" value="BILL_AMT6.true.integer.attribute"/>
+          <parameter key="18" value="PAY_AMT1.true.integer.attribute"/>
+          <parameter key="19" value="PAY_AMT2.true.integer.attribute"/>
+          <parameter key="20" value="PAY_AMT3.true.integer.attribute"/>
+          <parameter key="21" value="PAY_AMT4.true.integer.attribute"/>
+          <parameter key="22" value="PAY_AMT5.true.integer.attribute"/>
+          <parameter key="23" value="PAY_AMT6.true.integer.attribute"/>
+          <parameter key="24" value="default payment next month.true.binominal.label"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+      </operator>
+      <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Data Pre-Processing" width="90" x="246" y="34">
+        <process expanded="true">
+          <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Rename" width="90" x="112" y="34">
+            <process expanded="true">
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename BILL_AMNT" width="90" x="45" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="BILL_AMT"/>
+                <parameter key="replace_by" value="Bill_"/>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 0" width="90" x="179" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="0"/>
+                <parameter key="replace_by" value="September"/>
+                <description align="center" color="transparent" colored="false" width="126">September</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 1" width="90" x="313" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="1"/>
+                <parameter key="replace_by" value="September"/>
+                <description align="center" color="transparent" colored="false" width="126">September</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 2" width="90" x="447" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="2"/>
+                <parameter key="replace_by" value="August"/>
+                <description align="center" color="transparent" colored="false" width="126">August</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 3" width="90" x="581" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="3"/>
+                <parameter key="replace_by" value="July"/>
+                <description align="center" color="transparent" colored="false" width="126">July</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 4" width="90" x="715" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="4"/>
+                <parameter key="replace_by" value="June"/>
+                <description align="center" color="transparent" colored="false" width="126">June</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 5" width="90" x="849" y="34">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="5"/>
+                <parameter key="replace_by" value="May"/>
+                <description align="center" color="transparent" colored="false" width="126">May</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename 6" width="90" x="45" y="187">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="6"/>
+                <parameter key="replace_by" value="April"/>
+                <description align="center" color="transparent" colored="false" width="126">April</description>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename PAY_AMT" width="90" x="179" y="187">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="PAY_AMT"/>
+                <parameter key="replace_by" value="Pay_"/>
+              </operator>
+              <operator activated="true" class="rename_by_replacing" compatibility="8.2.000" expanded="true" height="82" name="Rename PAY" width="90" x="313" y="187">
+                <parameter key="attribute_filter_type" value="all"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="PAY"/>
+                <parameter key="replace_by" value="Status"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename AGE" width="90" x="447" y="187">
+                <parameter key="old_name" value="AGE"/>
+                <parameter key="new_name" value="Age"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename EDUCATION" width="90" x="581" y="187">
+                <parameter key="old_name" value="EDUCATION"/>
+                <parameter key="new_name" value="Education"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename SEX" width="90" x="715" y="187">
+                <parameter key="old_name" value="SEX"/>
+                <parameter key="new_name" value="Gender"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename MARRIAGE" width="90" x="849" y="187">
+                <parameter key="old_name" value="MARRIAGE"/>
+                <parameter key="new_name" value="Marriage"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename default ..." width="90" x="715" y="340">
+                <parameter key="old_name" value="default payment next month"/>
+                <parameter key="new_name" value="Default"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <operator activated="true" class="rename" compatibility="8.2.000" expanded="true" height="82" name="Rename LIMIT_BAL" width="90" x="849" y="340">
+                <parameter key="old_name" value="LIMIT_BAL"/>
+                <parameter key="new_name" value="Credit Limit"/>
+                <list key="rename_additional_attributes"/>
+              </operator>
+              <connect from_port="in 1" to_op="Rename BILL_AMNT" to_port="example set input"/>
+              <connect from_op="Rename BILL_AMNT" from_port="example set output" to_op="Rename 0" to_port="example set input"/>
+              <connect from_op="Rename 0" from_port="example set output" to_op="Rename 1" to_port="example set input"/>
+              <connect from_op="Rename 1" from_port="example set output" to_op="Rename 2" to_port="example set input"/>
+              <connect from_op="Rename 2" from_port="example set output" to_op="Rename 3" to_port="example set input"/>
+              <connect from_op="Rename 3" from_port="example set output" to_op="Rename 4" to_port="example set input"/>
+              <connect from_op="Rename 4" from_port="example set output" to_op="Rename 5" to_port="example set input"/>
+              <connect from_op="Rename 5" from_port="example set output" to_op="Rename 6" to_port="example set input"/>
+              <connect from_op="Rename 6" from_port="example set output" to_op="Rename PAY_AMT" to_port="example set input"/>
+              <connect from_op="Rename PAY_AMT" from_port="example set output" to_op="Rename PAY" to_port="example set input"/>
+              <connect from_op="Rename PAY" from_port="example set output" to_op="Rename AGE" to_port="example set input"/>
+              <connect from_op="Rename AGE" from_port="example set output" to_op="Rename EDUCATION" to_port="example set input"/>
+              <connect from_op="Rename EDUCATION" from_port="example set output" to_op="Rename SEX" to_port="example set input"/>
+              <connect from_op="Rename SEX" from_port="example set output" to_op="Rename MARRIAGE" to_port="example set input"/>
+              <connect from_op="Rename MARRIAGE" from_port="example set output" to_op="Rename default ..." to_port="example set input"/>
+              <connect from_op="Rename default ..." from_port="example set output" to_op="Rename LIMIT_BAL" to_port="example set input"/>
+              <connect from_op="Rename LIMIT_BAL" from_port="example set output" to_port="out 1"/>
+              <portSpacing port="source_in 1" spacing="0"/>
+              <portSpacing port="source_in 2" spacing="0"/>
+              <portSpacing port="sink_out 1" spacing="0"/>
+              <portSpacing port="sink_out 2" spacing="0"/>
+            </process>
+          </operator>
+          <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Generate Attributes" width="90" x="313" y="34">
+            <process expanded="true">
+              <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Generate 'Balance'" width="90" x="380" y="34">
+                <process expanded="true">
+                  <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="'Balance_May'" width="90" x="112" y="34">
+                    <list key="function_descriptions">
+                      <parameter key="Balance_May" value="Bill_April - Pay_May"/>
+                    </list>
+                    <parameter key="keep_all" value="true"/>
+                  </operator>
+                  <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="'Balance_June'" width="90" x="313" y="34">
+                    <list key="function_descriptions">
+                      <parameter key="Balance_June" value="Bill_May - Pay_June"/>
+                    </list>
+                    <parameter key="keep_all" value="true"/>
+                  </operator>
+                  <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="'Balance_July'" width="90" x="514" y="34">
+                    <list key="function_descriptions">
+                      <parameter key="Balance_July" value="Bill_June - Pay_July"/>
+                    </list>
+                    <parameter key="keep_all" value="true"/>
+                  </operator>
+                  <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="'Balance_August'" width="90" x="715" y="34">
+                    <list key="function_descriptions">
+                      <parameter key="Balance_August" value="Bill_July - Pay_August"/>
+                    </list>
+                    <parameter key="keep_all" value="true"/>
+                  </operator>
+                  <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="'Balance_September'" width="90" x="916" y="34">
+                    <list key="function_descriptions">
+                      <parameter key="Balance_September" value="Bill_August - Pay_September"/>
+                    </list>
+                    <parameter key="keep_all" value="true"/>
+                  </operator>
+                  <connect from_port="in 1" to_op="'Balance_May'" to_port="example set input"/>
+                  <connect from_op="'Balance_May'" from_port="example set output" to_op="'Balance_June'" to_port="example set input"/>
+                  <connect from_op="'Balance_June'" from_port="example set output" to_op="'Balance_July'" to_port="example set input"/>
+                  <connect from_op="'Balance_July'" from_port="example set output" to_op="'Balance_August'" to_port="example set input"/>
+                  <connect from_op="'Balance_August'" from_port="example set output" to_op="'Balance_September'" to_port="example set input"/>
+                  <connect from_op="'Balance_September'" from_port="example set output" to_port="out 1"/>
+                  <portSpacing port="source_in 1" spacing="0"/>
+                  <portSpacing port="source_in 2" spacing="0"/>
+                  <portSpacing port="sink_out 1" spacing="0"/>
+                  <portSpacing port="sink_out 2" spacing="0"/>
+                </process>
+              </operator>
+              <operator activated="false" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'CreditRatio'" width="90" x="581" y="34">
+                <list key="function_descriptions">
+                  <parameter key="CreditRatio_September" value="(Bill_September - Pay_September) * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_June" value="(Bill_June - Pay_June) * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_April" value="(Bill_April - Pay_April) * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_May" value="(Bill_May - Pay_May) * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_July" value="(Bill_July - Pay_July) * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_August" value="(Bill_August - Pay_August) * 100 / [Credit Limit]"/>
+                </list>
+                <parameter key="keep_all" value="true"/>
+              </operator>
+              <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'CreditRatio' (2)" width="90" x="782" y="34">
+                <list key="function_descriptions">
+                  <parameter key="CreditRatio_September" value="Bill_September * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_June" value="Bill_June * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_April" value="Bill_April * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_May" value="Bill_May * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_July" value="Bill_July * 100 / [Credit Limit]"/>
+                  <parameter key="CreditRatio_August" value="Bill_August * 100 / [Credit Limit]"/>
+                </list>
+                <parameter key="keep_all" value="true"/>
+              </operator>
+              <connect from_port="in 1" to_op="Generate 'Balance'" to_port="in 1"/>
+              <connect from_op="Generate 'Balance'" from_port="out 1" to_op="Generate 'CreditRatio' (2)" to_port="example set input"/>
+              <connect from_op="Generate 'CreditRatio' (2)" from_port="example set output" to_port="out 1"/>
+              <portSpacing port="source_in 1" spacing="0"/>
+              <portSpacing port="source_in 2" spacing="0"/>
+              <portSpacing port="sink_out 1" spacing="0"/>
+              <portSpacing port="sink_out 2" spacing="0"/>
+            </process>
+          </operator>
+          <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Replace Error Values" width="90" x="514" y="34">
+            <process expanded="true">
+              <operator activated="true" class="replace" compatibility="8.2.000" expanded="true" height="82" name="Modify Education" width="90" x="179" y="34">
+                <parameter key="attribute_filter_type" value="single"/>
+                <parameter key="attribute" value="Education"/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="nominal"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="file_path"/>
+                <parameter key="block_type" value="single_value"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="single_value"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="[056]"/>
+                <parameter key="replace_by" value="4"/>
+              </operator>
+              <operator activated="true" class="replace" compatibility="8.2.000" expanded="true" height="82" name="Modify Marriage" width="90" x="447" y="34">
+                <parameter key="attribute_filter_type" value="single"/>
+                <parameter key="attribute" value="Marriage"/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="nominal"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="file_path"/>
+                <parameter key="block_type" value="single_value"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="single_value"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+                <parameter key="replace_what" value="0"/>
+                <parameter key="replace_by" value="3"/>
+              </operator>
+              <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Clean-Up" width="90" x="715" y="34">
+                <process expanded="true">
+                  <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="'Inactive'" width="90" x="112" y="34">
+                    <process expanded="true">
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'Inactive'" width="90" x="313" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Inactive" value="if(Bill_April == 0 &amp;&amp; Bill_May == 0 &amp;&amp; Bill_June == 0 &amp;&amp; Bill_July == 0 &amp;&amp; Bill_August == 0 &amp;&amp; Bill_September == 0 &amp;&amp; &#10;Pay_May == 0 &amp;&amp; Pay_June == 0 &amp;&amp; Pay_July == 0 &amp;&amp; Pay_August == 0 &amp;&amp; Pay_September  == 0, 1, 0)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <operator activated="true" class="numerical_to_polynominal" compatibility="8.2.000" expanded="true" height="82" name="Numerical to Polynominal" width="90" x="581" y="34">
+                        <parameter key="attribute_filter_type" value="single"/>
+                        <parameter key="attribute" value="Inactive"/>
+                        <parameter key="attributes" value=""/>
+                        <parameter key="use_except_expression" value="false"/>
+                        <parameter key="value_type" value="numeric"/>
+                        <parameter key="use_value_type_exception" value="false"/>
+                        <parameter key="except_value_type" value="real"/>
+                        <parameter key="block_type" value="value_series"/>
+                        <parameter key="use_block_type_exception" value="false"/>
+                        <parameter key="except_block_type" value="value_series_end"/>
+                        <parameter key="invert_selection" value="false"/>
+                        <parameter key="include_special_attributes" value="false"/>
+                      </operator>
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Correlate 'Inactive'" width="90" x="782" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Default" value="if(Inactive == 1, 0, Default)"/>
+                          <parameter key="Status_April" value="if(Inactive == 1, -2, Status_April)"/>
+                          <parameter key="Status_September" value="if(Inactive == 1, -2, Status_September)"/>
+                          <parameter key="Status_May" value="if(Inactive == 1, -2, Status_May)"/>
+                          <parameter key="Status_June" value="if(Inactive == 1, -2, Status_June)"/>
+                          <parameter key="Status_July" value="if(Inactive == 1, -2, Status_July)"/>
+                          <parameter key="Status_August" value="if(Inactive == 1, -2, Status_August)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <connect from_port="in 1" to_op="Generate 'Inactive'" to_port="example set input"/>
+                      <connect from_op="Generate 'Inactive'" from_port="example set output" to_op="Numerical to Polynominal" to_port="example set input"/>
+                      <connect from_op="Numerical to Polynominal" from_port="example set output" to_op="Correlate 'Inactive'" to_port="example set input"/>
+                      <connect from_op="Correlate 'Inactive'" from_port="example set output" to_port="out 1"/>
+                      <portSpacing port="source_in 1" spacing="0"/>
+                      <portSpacing port="source_in 2" spacing="0"/>
+                      <portSpacing port="sink_out 1" spacing="0"/>
+                      <portSpacing port="sink_out 2" spacing="0"/>
+                    </process>
+                  </operator>
+                  <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="'Partial Inactive'" width="90" x="246" y="34">
+                    <process expanded="true">
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'P_Inactive'" width="90" x="179" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="P_Inactive" value="if(Bill_July == 0 &amp;&amp; Bill_August == 0 &amp;&amp; Bill_September == 0 &amp;&amp; &#10;Pay_July == 0 &amp;&amp; Pay_August == 0 &amp;&amp; Pay_September == 0 &amp;&amp;&#10;Balance_May == 0 &amp;&amp; Balance_June == 0 &amp;&amp; Balance_July == 0, 1, 0)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <operator activated="true" class="numerical_to_polynominal" compatibility="8.2.000" expanded="true" height="82" name="Numerical to Polynominal (2)" width="90" x="447" y="34">
+                        <parameter key="attribute_filter_type" value="single"/>
+                        <parameter key="attribute" value="P_Inactive"/>
+                        <parameter key="attributes" value=""/>
+                        <parameter key="use_except_expression" value="false"/>
+                        <parameter key="value_type" value="numeric"/>
+                        <parameter key="use_value_type_exception" value="false"/>
+                        <parameter key="except_value_type" value="real"/>
+                        <parameter key="block_type" value="value_series"/>
+                        <parameter key="use_block_type_exception" value="false"/>
+                        <parameter key="except_block_type" value="value_series_end"/>
+                        <parameter key="invert_selection" value="false"/>
+                        <parameter key="include_special_attributes" value="false"/>
+                      </operator>
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Correlate 'P_Inactive'" width="90" x="648" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Default" value="if(P_Inactive == 1, 0, Default)"/>
+                          <parameter key="Status_September" value="if(P_Inactive == 1, -2, Status_September)"/>
+                          <parameter key="Status_July" value="if(P_Inactive == 1, -2, Status_July)"/>
+                          <parameter key="Status_August" value="if(P_Inactive == 1, -2, Status_August)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <connect from_port="in 1" to_op="Generate 'P_Inactive'" to_port="example set input"/>
+                      <connect from_op="Generate 'P_Inactive'" from_port="example set output" to_op="Numerical to Polynominal (2)" to_port="example set input"/>
+                      <connect from_op="Numerical to Polynominal (2)" from_port="example set output" to_op="Correlate 'P_Inactive'" to_port="example set input"/>
+                      <connect from_op="Correlate 'P_Inactive'" from_port="example set output" to_port="out 1"/>
+                      <portSpacing port="source_in 1" spacing="0"/>
+                      <portSpacing port="source_in 2" spacing="0"/>
+                      <portSpacing port="sink_out 1" spacing="0"/>
+                      <portSpacing port="sink_out 2" spacing="0"/>
+                    </process>
+                  </operator>
+                  <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="'Not Active'" width="90" x="380" y="34">
+                    <process expanded="true">
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate ' Not Active'" width="90" x="246" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Not_Active" value="if(Bill_April &lt; 0 &amp;&amp; Bill_April == Bill_May &amp;&amp; Bill_May == Bill_June &amp;&amp; Bill_June == Bill_July &amp;&amp; Bill_July == Bill_August &amp;&amp; &#10;Bill_August == Bill_September &amp;&amp; Pay_April == 0 &amp;&amp; Pay_May == 0 &amp;&amp; Pay_June == 0 &amp;&amp; Pay_July == 0 &amp;&amp; &#10;Pay_August == 0 &amp;&amp; Pay_September == 0, 1, 0)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <operator activated="true" class="numerical_to_polynominal" compatibility="8.2.000" expanded="true" height="82" name="Numerical to Polynominal (6)" width="90" x="514" y="34">
+                        <parameter key="attribute_filter_type" value="single"/>
+                        <parameter key="attribute" value="Not_Active"/>
+                        <parameter key="attributes" value=""/>
+                        <parameter key="use_except_expression" value="false"/>
+                        <parameter key="value_type" value="numeric"/>
+                        <parameter key="use_value_type_exception" value="false"/>
+                        <parameter key="except_value_type" value="real"/>
+                        <parameter key="block_type" value="value_series"/>
+                        <parameter key="use_block_type_exception" value="false"/>
+                        <parameter key="except_block_type" value="value_series_end"/>
+                        <parameter key="invert_selection" value="false"/>
+                        <parameter key="include_special_attributes" value="false"/>
+                      </operator>
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Correlate 'Not Active'" width="90" x="782" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Default" value="if(Not_Active == 1, 0, Default)"/>
+                          <parameter key="Status_April" value="if(Not_Active == 1, -2, Status_April)"/>
+                          <parameter key="Status_September" value="if(Not_Active == 1, -2, Status_September)"/>
+                          <parameter key="Status_May" value="if(Not_Active == 1, -2, Status_May)"/>
+                          <parameter key="Status_June" value="if(Not_Active == 1, -2, Status_June)"/>
+                          <parameter key="Status_July" value="if(Not_Active == 1, -2, Status_July)"/>
+                          <parameter key="Status_August" value="if(Not_Active == 1, -2, Status_August)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <connect from_port="in 1" to_op="Generate ' Not Active'" to_port="example set input"/>
+                      <connect from_op="Generate ' Not Active'" from_port="example set output" to_op="Numerical to Polynominal (6)" to_port="example set input"/>
+                      <connect from_op="Numerical to Polynominal (6)" from_port="example set output" to_op="Correlate 'Not Active'" to_port="example set input"/>
+                      <connect from_op="Correlate 'Not Active'" from_port="example set output" to_port="out 1"/>
+                      <portSpacing port="source_in 1" spacing="0"/>
+                      <portSpacing port="source_in 2" spacing="0"/>
+                      <portSpacing port="sink_out 1" spacing="0"/>
+                      <portSpacing port="sink_out 2" spacing="0"/>
+                    </process>
+                  </operator>
+                  <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="'Active'" width="90" x="514" y="34">
+                    <process expanded="true">
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'Active'" width="90" x="179" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Active" value="if(Balance_May == 0 &amp;&amp; Balance_June == 0 &amp;&amp; Balance_July == 0 &amp;&amp; Balance_August == 0 &amp;&amp; Balance_September == 0 &amp;&amp; &#10;P_Inactive == 0, 1, 0)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <operator activated="true" class="numerical_to_polynominal" compatibility="8.2.000" expanded="true" height="82" name="Numerical to Polynominal (4)" width="90" x="380" y="34">
+                        <parameter key="attribute_filter_type" value="single"/>
+                        <parameter key="attribute" value="Active"/>
+                        <parameter key="attributes" value=""/>
+                        <parameter key="use_except_expression" value="false"/>
+                        <parameter key="value_type" value="numeric"/>
+                        <parameter key="use_value_type_exception" value="false"/>
+                        <parameter key="except_value_type" value="real"/>
+                        <parameter key="block_type" value="value_series"/>
+                        <parameter key="use_block_type_exception" value="false"/>
+                        <parameter key="except_block_type" value="value_series_end"/>
+                        <parameter key="invert_selection" value="false"/>
+                        <parameter key="include_special_attributes" value="false"/>
+                      </operator>
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Correlate 'Active'" width="90" x="581" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Status_May" value="if(Active == 1 &amp;&amp; Bill_April &gt; 0 &amp;&amp; Pay_May &gt; 0 &amp;&amp; Balance_May == 0, -1, Status_May)"/>
+                          <parameter key="Status_June" value="if(Active == 1 &amp;&amp; Bill_May &gt; 0 &amp;&amp; Pay_June &gt; 0 &amp;&amp; Balance_June == 0, -1, Status_June)"/>
+                          <parameter key="Status_July" value="if(Active == 1 &amp;&amp; Bill_June &gt; 0 &amp;&amp; Pay_July &gt; 0 &amp;&amp; Balance_July == 0, -1, Status_July)"/>
+                          <parameter key="Status_August" value="if(Active == 1 &amp;&amp; Bill_July &gt; 0 &amp;&amp; Pay_August &gt; 0 &amp;&amp; Balance_August == 0, -1, Status_August)"/>
+                          <parameter key="Status_September" value="if(Active == 1 &amp;&amp; Bill_August &gt; 0 &amp;&amp; Pay_September &gt; 0 &amp;&amp; Balance_September == 0, -1, Status_September)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <connect from_port="in 1" to_op="Generate 'Active'" to_port="example set input"/>
+                      <connect from_op="Generate 'Active'" from_port="example set output" to_op="Numerical to Polynominal (4)" to_port="example set input"/>
+                      <connect from_op="Numerical to Polynominal (4)" from_port="example set output" to_op="Correlate 'Active'" to_port="example set input"/>
+                      <connect from_op="Correlate 'Active'" from_port="example set output" to_port="out 1"/>
+                      <portSpacing port="source_in 1" spacing="0"/>
+                      <portSpacing port="source_in 2" spacing="0"/>
+                      <portSpacing port="sink_out 1" spacing="0"/>
+                      <portSpacing port="sink_out 2" spacing="0"/>
+                    </process>
+                  </operator>
+                  <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="'Semi Active'" width="90" x="648" y="34">
+                    <process expanded="true">
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Generate 'Semi_Active'" width="90" x="179" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Semi_Active" value="if(Balance_July == 0 &amp;&amp; Balance_August == 0 &amp;&amp; Balance_September == 0 &amp;&amp; &#10;Bill_June &gt; 0 &amp;&amp; Bill_July &gt; 0 &amp;&amp; Bill_August &gt; 0 &amp;&amp; Bill_September &gt; 0, 1, 0)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <operator activated="true" class="numerical_to_polynominal" compatibility="8.2.000" expanded="true" height="82" name="Numerical to Polynominal (5)" width="90" x="380" y="34">
+                        <parameter key="attribute_filter_type" value="single"/>
+                        <parameter key="attribute" value="Semi_Active"/>
+                        <parameter key="attributes" value=""/>
+                        <parameter key="use_except_expression" value="false"/>
+                        <parameter key="value_type" value="numeric"/>
+                        <parameter key="use_value_type_exception" value="false"/>
+                        <parameter key="except_value_type" value="real"/>
+                        <parameter key="block_type" value="value_series"/>
+                        <parameter key="use_block_type_exception" value="false"/>
+                        <parameter key="except_block_type" value="value_series_end"/>
+                        <parameter key="invert_selection" value="false"/>
+                        <parameter key="include_special_attributes" value="false"/>
+                      </operator>
+                      <operator activated="true" class="generate_attributes" compatibility="8.2.000" expanded="true" height="82" name="Correlate 'Semi_Active'" width="90" x="581" y="34">
+                        <list key="function_descriptions">
+                          <parameter key="Status_August" value="if(Semi_Active == 1, -1, Status_August)"/>
+                          <parameter key="Status_September" value="if(Semi_Active == 1, -1, Status_September)"/>
+                        </list>
+                        <parameter key="keep_all" value="true"/>
+                      </operator>
+                      <connect from_port="in 1" to_op="Generate 'Semi_Active'" to_port="example set input"/>
+                      <connect from_op="Generate 'Semi_Active'" from_port="example set output" to_op="Numerical to Polynominal (5)" to_port="example set input"/>
+                      <connect from_op="Numerical to Polynominal (5)" from_port="example set output" to_op="Correlate 'Semi_Active'" to_port="example set input"/>
+                      <connect from_op="Correlate 'Semi_Active'" from_port="example set output" to_port="out 1"/>
+                      <portSpacing port="source_in 1" spacing="0"/>
+                      <portSpacing port="source_in 2" spacing="0"/>
+                      <portSpacing port="sink_out 1" spacing="0"/>
+                      <portSpacing port="sink_out 2" spacing="0"/>
+                    </process>
+                  </operator>
+                  <operator activated="true" class="select_attributes" compatibility="8.2.000" expanded="true" height="82" name="Drop" width="90" x="849" y="34">
+                    <parameter key="attribute_filter_type" value="subset"/>
+                    <parameter key="attribute" value=""/>
+                    <parameter key="attributes" value="Active|Semi_Active|P_Inactive|Not_Active|Inactive"/>
+                    <parameter key="use_except_expression" value="false"/>
+                    <parameter key="value_type" value="attribute_value"/>
+                    <parameter key="use_value_type_exception" value="false"/>
+                    <parameter key="except_value_type" value="time"/>
+                    <parameter key="block_type" value="attribute_block"/>
+                    <parameter key="use_block_type_exception" value="false"/>
+                    <parameter key="except_block_type" value="value_matrix_row_start"/>
+                    <parameter key="invert_selection" value="true"/>
+                    <parameter key="include_special_attributes" value="false"/>
+                  </operator>
+                  <connect from_port="in 1" to_op="'Inactive'" to_port="in 1"/>
+                  <connect from_op="'Inactive'" from_port="out 1" to_op="'Partial Inactive'" to_port="in 1"/>
+                  <connect from_op="'Partial Inactive'" from_port="out 1" to_op="'Not Active'" to_port="in 1"/>
+                  <connect from_op="'Not Active'" from_port="out 1" to_op="'Active'" to_port="in 1"/>
+                  <connect from_op="'Active'" from_port="out 1" to_op="'Semi Active'" to_port="in 1"/>
+                  <connect from_op="'Semi Active'" from_port="out 1" to_op="Drop" to_port="example set input"/>
+                  <connect from_op="Drop" from_port="example set output" to_port="out 1"/>
+                  <portSpacing port="source_in 1" spacing="0"/>
+                  <portSpacing port="source_in 2" spacing="0"/>
+                  <portSpacing port="sink_out 1" spacing="0"/>
+                  <portSpacing port="sink_out 2" spacing="0"/>
+                </process>
+              </operator>
+              <connect from_port="in 1" to_op="Modify Education" to_port="example set input"/>
+              <connect from_op="Modify Education" from_port="example set output" to_op="Modify Marriage" to_port="example set input"/>
+              <connect from_op="Modify Marriage" from_port="example set output" to_op="Clean-Up" to_port="in 1"/>
+              <connect from_op="Clean-Up" from_port="out 1" to_port="out 1"/>
+              <portSpacing port="source_in 1" spacing="0"/>
+              <portSpacing port="source_in 2" spacing="0"/>
+              <portSpacing port="sink_out 1" spacing="0"/>
+              <portSpacing port="sink_out 2" spacing="0"/>
+            </process>
+          </operator>
+          <operator activated="true" class="subprocess" compatibility="8.2.000" expanded="true" height="82" name="Drop &amp; Re-arrange" width="90" x="715" y="34">
+            <process expanded="true">
+              <operator activated="true" class="select_attributes" compatibility="8.2.000" expanded="true" height="82" name="Drop ID" width="90" x="380" y="34">
+                <parameter key="attribute_filter_type" value="single"/>
+                <parameter key="attribute" value="ID"/>
+                <parameter key="attributes" value=""/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="true"/>
+                <parameter key="include_special_attributes" value="false"/>
+              </operator>
+              <operator activated="true" class="order_attributes" compatibility="8.2.000" expanded="true" height="82" name="Reorder Attributes" width="90" x="648" y="34">
+                <parameter key="sort_mode" value="user specified"/>
+                <parameter key="attribute_ordering" value="Age|Gender|Education|Marriage|Inactive|P_Inactive|Not_Active|Active|Credit Limit|Bill_April|Pay_April|Bill_May|Pay_May|Bill_June|Pay_June|Bill_July|Pay_July|Bill_August|Pay_August|Bill_September|Pay_September|Status_April|Status_May|Status_June|Status_July|Status_August|Status_September|Balance_May|Balance_June|Balance_July|Balance_August|Balance_September|CreditRatio_April|CreditRatio_May|CreditRatio_June|CreditRatio_July|CreditRatio_August|CreditRatio_September"/>
+                <parameter key="use_regular_expressions" value="false"/>
+                <parameter key="handle_unmatched" value="append"/>
+                <parameter key="sort_direction" value="ascending"/>
+              </operator>
+              <connect from_port="in 1" to_op="Drop ID" to_port="example set input"/>
+              <connect from_op="Drop ID" from_port="example set output" to_op="Reorder Attributes" to_port="example set input"/>
+              <connect from_op="Reorder Attributes" from_port="example set output" to_port="out 1"/>
+              <portSpacing port="source_in 1" spacing="0"/>
+              <portSpacing port="source_in 2" spacing="0"/>
+              <portSpacing port="sink_out 1" spacing="0"/>
+              <portSpacing port="sink_out 2" spacing="0"/>
+            </process>
+          </operator>
+          <connect from_port="in 1" to_op="Rename" to_port="in 1"/>
+          <connect from_op="Rename" from_port="out 1" to_op="Generate Attributes" to_port="in 1"/>
+          <connect from_op="Generate Attributes" from_port="out 1" to_op="Replace Error Values" to_port="in 1"/>
+          <connect from_op="Replace Error Values" from_port="out 1" to_op="Drop &amp; Re-arrange" to_port="in 1"/>
+          <connect from_op="Drop &amp; Re-arrange" from_port="out 1" to_port="out 1"/>
+          <portSpacing port="source_in 1" spacing="0"/>
+          <portSpacing port="source_in 2" spacing="0"/>
+          <portSpacing port="sink_out 1" spacing="0"/>
+          <portSpacing port="sink_out 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="split_data" compatibility="8.2.000" expanded="true" height="103" name="Split Data" width="90" x="380" y="187">
+        <enumeration key="partitions">
+          <parameter key="ratio" value="0.7"/>
+          <parameter key="ratio" value="0.3"/>
+        </enumeration>
+        <parameter key="sampling_type" value="stratified sampling"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="624"/>
+      </operator>
+      <operator activated="true" class="vote" compatibility="8.2.000" expanded="true" height="68" name="Vote" width="90" x="581" y="34">
+        <process expanded="true">
+          <operator activated="true" class="h2o:deep_learning" compatibility="8.2.000" expanded="true" height="82" name="Deep Learning" width="90" x="514" y="34">
+            <parameter key="activation" value="Rectifier"/>
+            <enumeration key="hidden_layer_sizes">
+              <parameter key="hidden_layer_sizes" value="50"/>
+              <parameter key="hidden_layer_sizes" value="50"/>
+            </enumeration>
+            <enumeration key="hidden_dropout_ratios"/>
+            <parameter key="reproducible_(uses_1_thread)" value="false"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="epochs" value="10.0"/>
+            <parameter key="compute_variable_importances" value="false"/>
+            <parameter key="train_samples_per_iteration" value="-2"/>
+            <parameter key="adaptive_rate" value="true"/>
+            <parameter key="epsilon" value="1.0E-8"/>
+            <parameter key="rho" value="0.99"/>
+            <parameter key="learning_rate" value="0.005"/>
+            <parameter key="learning_rate_annealing" value="1.0E-6"/>
+            <parameter key="learning_rate_decay" value="1.0"/>
+            <parameter key="momentum_start" value="0.0"/>
+            <parameter key="momentum_ramp" value="1000000.0"/>
+            <parameter key="momentum_stable" value="0.0"/>
+            <parameter key="nesterov_accelerated_gradient" value="true"/>
+            <parameter key="standardize" value="true"/>
+            <parameter key="L1" value="1.0E-5"/>
+            <parameter key="L2" value="0.0"/>
+            <parameter key="max_w2" value="10.0"/>
+            <parameter key="loss_function" value="Automatic"/>
+            <parameter key="distribution_function" value="AUTO"/>
+            <parameter key="early_stopping" value="false"/>
+            <parameter key="stopping_rounds" value="1"/>
+            <parameter key="stopping_metric" value="AUTO"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <parameter key="missing_values_handling" value="MeanImputation"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+            <list key="expert_parameters"/>
+            <list key="expert_parameters_"/>
+          </operator>
+          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="8.2.000" expanded="true" height="103" name="Decision Tree" width="90" x="514" y="136">
+            <parameter key="criterion" value="information_gain"/>
+            <parameter key="maximal_depth" value="24"/>
+            <parameter key="apply_pruning" value="true"/>
+            <parameter key="confidence" value="0.25"/>
+            <parameter key="apply_prepruning" value="true"/>
+            <parameter key="minimal_gain" value="0.1"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+          </operator>
+          <operator activated="true" class="naive_bayes" compatibility="8.2.000" expanded="true" height="82" name="Naive Bayes" width="90" x="514" y="289">
+            <parameter key="laplace_correction" value="true"/>
+          </operator>
+          <connect from_port="training set 1" to_op="Deep Learning" to_port="training set"/>
+          <connect from_port="training set 2" to_op="Decision Tree" to_port="training set"/>
+          <connect from_port="training set 3" to_op="Naive Bayes" to_port="training set"/>
+          <connect from_op="Deep Learning" from_port="model" to_port="base model 1"/>
+          <connect from_op="Decision Tree" from_port="model" to_port="base model 2"/>
+          <connect from_op="Naive Bayes" from_port="model" to_port="base model 3"/>
+          <portSpacing port="source_training set 1" spacing="0"/>
+          <portSpacing port="source_training set 2" spacing="0"/>
+          <portSpacing port="source_training set 3" spacing="0"/>
+          <portSpacing port="source_training set 4" spacing="0"/>
+          <portSpacing port="source_training set 5" spacing="0"/>
+          <portSpacing port="sink_base model 1" spacing="0"/>
+          <portSpacing port="sink_base model 2" spacing="0"/>
+          <portSpacing port="sink_base model 3" spacing="0"/>
+          <portSpacing port="sink_base model 4" spacing="0"/>
+          <portSpacing port="sink_base model 5" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="8.2.000" expanded="true" height="82" name="Apply Model" width="90" x="782" y="187">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <operator activated="true" class="performance" compatibility="8.2.000" expanded="true" height="82" name="Performance" width="90" x="916" y="34">
+        <parameter key="use_example_weights" value="true"/>
+      </operator>
+      <connect from_op="Read Excel" from_port="output" to_op="Data Pre-Processing" to_port="in 1"/>
+      <connect from_op="Data Pre-Processing" from_port="out 1" to_op="Split Data" to_port="example set"/>
+      <connect from_op="Split Data" from_port="partition 1" to_op="Vote" to_port="training set"/>
+      <connect from_op="Split Data" from_port="partition 2" to_op="Apply Model" to_port="unlabelled data"/>
+      <connect from_op="Vote" from_port="model" to_op="Apply Model" to_port="model"/>
+      <connect from_op="Apply Model" from_port="labelled data" to_op="Performance" to_port="labelled data"/>
+      <connect from_op="Apply Model" from_port="model" to_port="result 2"/>
+      <connect from_op="Performance" from_port="performance" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
