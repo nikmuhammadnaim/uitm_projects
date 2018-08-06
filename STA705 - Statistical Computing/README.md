@@ -52,6 +52,13 @@ One of the most popular technical trend indicator among stock investors are the 
 ![nestle_sma](https://user-images.githubusercontent.com/24283367/43528327-47e8fba0-95db-11e8-8482-00d600bfe5f8.png)
 
 If the 50-day SMA crosses under the 200-day SMA, it is usually a good indicator to sell the stock. The same goes the other way, if the 50-day SMA crosses over the 200-day SMA, investors will generally rush to buy the stocks
+
+#### 3. 20-day Forecasting
+
+Forecasted Nestle stock price for the first 20 days of 2018 using forecast() function. 
+
+![nestle_20day_forecast](https://user-images.githubusercontent.com/24283367/43727809-9bb36358-99d5-11e8-8564-c093211af458.png)
+
   
 ## Group Project: Multivariate Linear Regression Analysis
 
