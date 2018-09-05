@@ -14,6 +14,12 @@ To compare the accuracy of breast cancer detection thru FNA biopsy between three
   2. Artificial Neural Network (ANN)
   3. Decision Tree  
   
+## Graphical Plot
+
+The Neural Network Topology for 1 hidden layer and 6 hidden neurons configuration:  
+  
+![ann_6hiddenneuron](https://user-images.githubusercontent.com/24283367/45101546-4bb51180-b15e-11e8-83bf-9c795837d04a.png)
+
 ## Results  
 | Machine Learning Model             | Accuracy | Precision |
 | ---------------------------------- |:--------:| --------- |
