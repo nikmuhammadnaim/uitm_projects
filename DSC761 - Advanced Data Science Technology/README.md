@@ -4,20 +4,14 @@
 
 ### Introduction
 
-A good concrete has the following qualities: strong, durable and resist wear and tear. There are three tests that are good at measuring concrete strength. Those tests are:
-  * concrete slump test
-  * flow table test
-  * compressive strength test
+Education Data Mining (EDM) is mainly used for predicting student’s academic performance which will then allow the academic institution to create a strategic program to boost the student’s performance (Hamsa et al, 2016). It also allows for early intervention to take place should a student’s performance is expected to drop. This study aims to demonstrate the capability of using machine learning models to predict student’s final grade via Support Vector Machine (SVM) and Decision Tree (DT).
 
 ### Objectives
 
-1. To model our three measure of concrete strength into three separate linear regression.  
+1. To build machine learning models using Decision Tree and Support Vector Machine algorithm to predict student’s performance in Portuguese and Mathematics subject. 
   
-2. To identify the best variable selection method for our linear models:
-    * BIC via regsubset() function
-    * AIC va step() function
-
-3. Explore the simulation() function with our three linear models.
+2. To describe and discuss the parameters that make up each machine learning model.
+  
 
 ### Results
 
@@ -49,5 +43,5 @@ Data was made available by Paulo Cortez and retrieved from UCI Machine Learning 
 
 ## Lecturer
 
-[Dr. Maryam]  
-[Dr. Azlan Ismail](https://fskm.uitm.edu.my/v4/index.php?option=com_content&view=article&id=246&catid=43&Itemid=227)
+-  Dr. Maryam
+-  [Dr. Azlan Ismail](https://fskm.uitm.edu.my/v4/index.php?option=com_content&view=article&id=246&catid=43&Itemid=227)
